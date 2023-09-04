@@ -1,56 +1,46 @@
-// import logo from './logo.svg';
-import React, { useState } from 'react'
 import './App.css';
-import Graph from "react-vis-network-graph";
+import Tree from 'react-d3-tree';
 
 function App() {
-  const default_graph = {
-    nodes: [
-      {id: 1, label: "1", title: "node 1 tooltip text"},
-      {id: 2, label: "2", title: "node 2 tooltip text"},
-      {id: 3, label: "3", title: "node 3 tooltip text"},
-      {id: 4, label: "4", title: "node 4 tooltip text"},
-      {id: 5, label: "5", title: "node 5 tooltip text"},
-      {id: 6, label: "6", title: "node 6 tooltip text"}
+  const orgChart = {
+    name: 'CEO',
+    children: [
+      {
+        name: 'Manager',
+        attributes: {
+          department: 'Production',
+        },
+        children: [
+          {
+            name: 'Foreman',
+            attributes: {
+              department: 'Fabrication',
+            },
+            children: [
+              {
+                name: 'Worker',
+              },
+            ],
+          },
+          {
+            name: 'Foreman',
+            attributes: {
+              department: 'Assembly',
+            },
+            children: [
+              {
+                name: 'Worker',
+              },
+            ],
+          },
+        ],
+      },
     ],
-    edges: [
-      {from: 1, to: 2},
-      {from: 1, to: 3},
-      {from: 2, to: 4},
-      {from: 2, to: 5},
-      {from: 2, to: 6},
-      {from: 6, to: 1},
-      {from: 4, to: 6}
-    ]
   };
-
-  const options = {
-    layout: {
-      hierarchical: true
-    },
-    edges: {
-      color: "red"
-    },
-    height: "500px"
-  };
-
-  const events = {
-    select: function (event) {
-      var { nodes, edges } = event;
-      console.log(edges);
-      console.log(nodes);
-    }
-  };
-
-  let [graph] = useState(default_graph)
 
   return (
-    <div className="graph">
-      <Graph
-        graph={graph}
-        options={options}
-        events={events}
-      />
+    <div class="graph" id="treeWrapper">
+      <Tree data={orgChart} />
     </div>
   );
 }

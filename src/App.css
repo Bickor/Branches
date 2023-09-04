@@ -6,9 +6,6 @@
   border-color: red;
   border-width: 1px;
   border-style: solid;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: 100%;
+  height: 100vh;
 }
