@@ -2,7 +2,7 @@ import './App.css';
 import Tree from 'react-d3-tree';
 
 function App() {
-  const orgChart = {
+  const graph = {
     name: 'CEO',
     children: [
       {
@@ -40,7 +40,11 @@ function App() {
 
   return (
     <div class="graph" id="treeWrapper">
-      <Tree data={orgChart} />
+      <Tree 
+        data={graph} 
+        pathFunc={"step"}
+        orientation={"vertical"}
+      />
     </div>
   );
 }
