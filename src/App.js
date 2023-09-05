@@ -1,50 +1,20 @@
 import './App.css';
-import Tree from 'react-d3-tree';
+// import Tree from 'react-d3-tree';
+// import * as d3 from 'd3'
+// import { Tree, TreeNode } from 'react-organizational-chart';
+import { Tree } from "./tree/Tree";
+import { TreeNode } from "./tree/TreeNode";
 
 function App() {
-  const graph = {
-    name: 'CEO',
-    children: [
-      {
-        name: 'Manager',
-        attributes: {
-          department: 'Production',
-        },
-        children: [
-          {
-            name: 'Foreman',
-            attributes: {
-              department: 'Fabrication',
-            },
-            children: [
-              {
-                name: 'Worker',
-              },
-            ],
-          },
-          {
-            name: 'Foreman',
-            attributes: {
-              department: 'Assembly',
-            },
-            children: [
-              {
-                name: 'Worker',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  };
 
   return (
     <div class="graph" id="treeWrapper">
-      <Tree 
-        data={graph} 
-        pathFunc={"step"}
-        orientation={"vertical"}
-      />
+      <Tree label={<div>Root</div>}>
+        <TreeNode label={<div>Child 1</div>}>
+          <TreeNode label={<div>Grand Child 1</div>} />
+          <TreeNode label={<div>Grand Child 2</div>} />
+        </TreeNode>
+      </Tree>
     </div>
   );
 }
